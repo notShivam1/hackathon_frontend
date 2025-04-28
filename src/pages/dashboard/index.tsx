@@ -12,6 +12,7 @@ export default function DashboardPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [requirements, setRequirements] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
 
   useEffect(() => {
     const r = getRoleFromToken();
@@ -25,11 +26,23 @@ export default function DashboardPage() {
   const handleProfileSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await API.post("/profile", { fullName, resume });
-      alert("Profile saved!");
+      if (!resumeFile) {
+        alert("Please upload a resume");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", resumeFile);
+      formData.append("fullName", fullName);
+
+      await API.post("/resume/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      alert("Resume uploaded successfully!");
     } catch (err) {
       console.error(err);
-      alert("Error saving profile");
+      alert("Error uploading resume");
     }
   };
 
@@ -54,7 +67,6 @@ export default function DashboardPage() {
         {role === "CANDIDATE" ? (
           <form onSubmit={handleProfileSubmit} style={styles.form}>
             <h1 style={styles.title}>Create Your Profile</h1>
-
             <div style={styles.field}>
               <label style={styles.label}>Full Name</label>
               <input
@@ -65,17 +77,16 @@ export default function DashboardPage() {
                 required
               />
             </div>
-
             <div style={styles.field}>
-              <label style={styles.label}>Resume Text</label>
-              <textarea
-                value={resume}
-                onChange={(e) => setResume(e.target.value)}
-                style={{ ...styles.input, height: "150px" }}
+              <label style={styles.label}>Upload Resume (PDF)</label>
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => setResumeFile(e.target.files?.[0] || null)}
+                style={styles.input}
                 required
               />
             </div>
-
             <button type="submit" style={styles.button}>
               Save Profile
             </button>
