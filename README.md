@@ -2,10 +2,6 @@
 
 The **frontend application** for a candidate-job matching platform is built with **Next.js** and **TypeScript**.
 
-### 🔗 Live URL
-
-Frontend: [https://hackathon-frontend-gilt-eight.vercel.app/auth/login](https://hackathon-frontend-gilt-eight.vercel.app/auth/login)
-
 ---
 
 ## 🛠 Tech Stack
