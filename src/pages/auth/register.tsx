@@ -46,7 +46,7 @@ export default function RegisterPage() {
         <div style={styles.field}>
           <label style={styles.label}>Password</label>
           <input
-            // type="password"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={styles.input}
