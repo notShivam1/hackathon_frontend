@@ -5,6 +5,7 @@ import API from "@/lib/axios";
 export default function JobMatchesPage() {
   const router = useRouter();
   const { jobId } = router.query;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const [matches, setMatches] = useState<any[]>([]);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ export default function JobMatchesPage() {
       try {
         const res = await API.get(`/matches/job/${jobId}`);
         setMatches(res.data);
+        /* eslint-disable @typescript-eslint/no-explicit-any */
       } catch (err) {
         console.error(err);
       }

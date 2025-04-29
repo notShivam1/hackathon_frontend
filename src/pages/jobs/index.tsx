@@ -28,7 +28,7 @@ export default function EmployerJobList() {
       </h1>
 
       {jobs.length === 0 ? (
-        <p>You haven't posted any jobs yet.</p>
+        <p>You havent posted any jobs yet.</p>
       ) : (
         <ul style={{ listStyle: "none", padding: 0 }}>
           {jobs.map((job) => (
