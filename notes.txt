@@ -1,5 +1,16 @@
+Candidates-
 shivam.119966@yahoo.com
 password@1
 
 test@example.com
 test1234
+
+shivam.lawyer@yahoo.com
+password@1
+
+Employers-
+
+shivam@yahoo.com
+password@1
+
+https://hackathon-backend-1-hf8v.onrender.com/

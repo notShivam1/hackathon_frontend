@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import API from "@/lib/axios";
-
+import { getRoleFromToken } from "@/utils/auth";
 export default function LoginPage() {
   const router = useRouter();
-
+  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+    const role = getRoleFromToken();
+    if (role) {
+      router.push("/dashboard");
+    }
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +31,7 @@ export default function LoginPage() {
       setError(err.response?.data?.message || "Login failed");
     }
   };
-
+  if (!mounted) return null;
   return (
     <div style={styles.page}>
       <form onSubmit={handleLogin} style={styles.form}>

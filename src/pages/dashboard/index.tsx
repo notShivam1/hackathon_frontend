@@ -8,18 +8,21 @@ export default function DashboardPage() {
   const [role, setRole] = useState<"CANDIDATE" | "EMPLOYER" | null>(null);
 
   const [fullName, setFullName] = useState("");
-  const [resume, setResume] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [requirements, setRequirements] = useState("");
   const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const r = getRoleFromToken();
     if (!r) {
       router.push("/auth/login");
     } else {
       setRole(r);
+      setLoading(false);
     }
   }, [router]);
 
@@ -58,6 +61,10 @@ export default function DashboardPage() {
   };
 
   if (!role) {
+    return <div>Loading...</div>;
+  }
+
+  if (loading || !role) {
     return <div>Loading...</div>;
   }
 
@@ -130,6 +137,28 @@ export default function DashboardPage() {
               Post Job
             </button>
           </form>
+        )}
+        {role === "CANDIDATE" && (
+          <a
+            href="/matches/candidate"
+            style={{ color: "blue", textDecoration: "underline" }}
+          >
+            View Recommended Jobs →
+          </a>
+        )}
+
+        {role === "EMPLOYER" && (
+          <a
+            href="/jobs"
+            style={{
+              display: "block",
+              marginTop: "20px",
+              color: "blue",
+              textDecoration: "underline",
+            }}
+          >
+            View All Posted Jobs →
+          </a>
         )}
       </div>
     </div>
