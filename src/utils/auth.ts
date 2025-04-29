@@ -7,8 +7,9 @@ export function getRoleFromToken(): "CANDIDATE" | "EMPLOYER" | null {
   try {
     const payload = JSON.parse(atob(token.split(".")[1]));
     return payload.role;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error) {
-    console.error("Invalid token");
+    console.error("Invalid token", error);
     return null;
   }
 }

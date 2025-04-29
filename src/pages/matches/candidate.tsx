@@ -12,6 +12,7 @@ export default function CandidateMatchesPage() {
       try {
         const res = await API.get("/matches/candidate");
         setMatches(res.data);
+        /* eslint-disable @typescript-eslint/no-explicit-any */
       } catch (err) {
         console.error(err);
         router.push("/auth/login");

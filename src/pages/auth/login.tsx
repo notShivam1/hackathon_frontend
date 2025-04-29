@@ -26,6 +26,7 @@ export default function LoginPage() {
       const { token } = res.data;
       localStorage.setItem("token", token);
       router.push("/dashboard");
+      /* eslint-disable @typescript-eslint/no-explicit-any */
     } catch (err: any) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed");
@@ -53,7 +54,7 @@ export default function LoginPage() {
         <div style={styles.field}>
           <label style={styles.label}>Password</label>
           <input
-            // type="password"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={styles.input}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "@/lib/axios";
 
 export default function EmployerJobList() {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const [jobs, setJobs] = useState<any[]>([]);
 
   useEffect(() => {
@@ -9,6 +10,7 @@ export default function EmployerJobList() {
       try {
         const res = await API.get("/job");
         setJobs(res.data);
+        /* eslint-disable @typescript-eslint/no-explicit-any */
       } catch (err) {
         console.error(err);
       }

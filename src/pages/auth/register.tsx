@@ -17,6 +17,7 @@ export default function RegisterPage() {
     try {
       await API.post("/auth/register", { email, password, role });
       router.push("/auth/login");
+      /* eslint-disable @typescript-eslint/no-explicit-any */
     } catch (err: any) {
       console.error(err);
       setError(err.response?.data?.message || "Registration failed");

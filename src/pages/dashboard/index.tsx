@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @next/next/no-html-link-for-pages */
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getRoleFromToken } from "@/utils/auth";
 import API from "@/lib/axios";
-
 export default function DashboardPage() {
   const router = useRouter();
   const [role, setRole] = useState<"CANDIDATE" | "EMPLOYER" | null>(null);
