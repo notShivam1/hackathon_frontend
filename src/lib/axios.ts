@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL + "/api", // our backend server
+  baseURL: process.env.NEXT_PUBLIC_API_URL + "api", // our backend server
 });
 
 // Attach Authorization token automatically if exists
