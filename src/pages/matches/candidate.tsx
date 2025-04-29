@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import API from "@/lib/axios";
 
 export default function CandidateMatchesPage() {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const [matches, setMatches] = useState<any[]>([]);
   const router = useRouter();
 
