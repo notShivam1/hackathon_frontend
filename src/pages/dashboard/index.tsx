@@ -61,6 +61,11 @@ export default function DashboardPage() {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth/login"; // Redirect to login
+  };
+
   if (!role) {
     return <div>Loading...</div>;
   }
@@ -72,6 +77,9 @@ export default function DashboardPage() {
   return (
     <div style={styles.page}>
       <div style={styles.container}>
+        <button onClick={logout} style={{ marginTop: "20px", color: "red" }}>
+          Logout
+        </button>
         {role === "CANDIDATE" ? (
           <form onSubmit={handleProfileSubmit} style={styles.form}>
             <h1 style={styles.title}>Create Your Profile</h1>

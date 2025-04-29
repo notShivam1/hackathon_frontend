@@ -23,6 +23,11 @@ export default function CandidateMatchesPage() {
     fetchMatches();
   }, [router]);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth/login"; // Redirect to login
+  };
+
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: "40px" }}>
       <h1
@@ -30,6 +35,9 @@ export default function CandidateMatchesPage() {
       >
         Recommended Jobs
       </h1>
+      <button onClick={logout} style={{ marginTop: "20px", color: "red" }}>
+        Logout
+      </button>
       {matches.length === 0 ? (
         <p>No matches yet. Upload your resume first.</p>
       ) : (

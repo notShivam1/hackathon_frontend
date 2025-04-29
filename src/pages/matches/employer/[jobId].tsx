@@ -24,6 +24,11 @@ export default function JobMatchesPage() {
     fetchMatches();
   }, [jobId]);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth/login"; // Redirect to login
+  };
+
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: "40px" }}>
       <h1
@@ -31,6 +36,9 @@ export default function JobMatchesPage() {
       >
         Matched Candidates
       </h1>
+      <button onClick={logout} style={{ marginTop: "20px", color: "red" }}>
+        Logout
+      </button>
       {matches.length === 0 ? (
         <p>No candidates matched this job yet.</p>
       ) : (

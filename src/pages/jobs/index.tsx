@@ -19,6 +19,11 @@ export default function EmployerJobList() {
     fetchJobs();
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth/login"; // Redirect to login
+  };
+
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: "40px 20px" }}>
       <h1
@@ -26,6 +31,9 @@ export default function EmployerJobList() {
       >
         Your Posted Jobs
       </h1>
+      <button onClick={logout} style={{ marginTop: "20px", color: "red" }}>
+        Logout
+      </button>
 
       {jobs.length === 0 ? (
         <p>You havent posted any jobs yet.</p>
