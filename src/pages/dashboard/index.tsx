@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @next/next/no-html-link-for-pages */
+import { CSSProperties } from "react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getRoleFromToken } from "@/utils/auth";
@@ -165,7 +166,7 @@ export default function DashboardPage() {
   );
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   page: {
     minHeight: "100vh",
     display: "flex",

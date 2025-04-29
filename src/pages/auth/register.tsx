@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import API from "@/lib/axios";
+import { CSSProperties } from "react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -73,7 +74,7 @@ export default function RegisterPage() {
   );
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   page: {
     minHeight: "100vh",
     display: "flex",

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import API from "@/lib/axios";
 import { getRoleFromToken } from "@/utils/auth";
+import { CSSProperties } from "react";
+
 export default function LoginPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -70,7 +72,7 @@ export default function LoginPage() {
   );
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   page: {
     minHeight: "100vh",
     display: "flex",
